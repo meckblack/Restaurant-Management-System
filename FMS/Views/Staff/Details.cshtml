@@ -1,0 +1,90 @@
+﻿@model FMS.Models.Staff
+
+<div class="modal-header">
+    <i class="material-icons pull-right">cancel</i>
+</div>
+    <div class="modal-body">
+        <div class="">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header modal-header" data-background-color="purple">
+                                <h4 class="title">Delteing @Html.DisplayFor(model => model.StaffFirstName) @Html.DisplayFor(model => model.StaffLastName)</h4>
+                            </div>
+                            <div class="card-content">
+                                <dl class="dl-horizontal col-md-offset-2">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.StaffFirstName)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.StaffFirstName)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.StaffLastName)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.StaffLastName)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.StaffEmail)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.StaffEmail)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.StaffGender)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.StaffGender)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.StaffAddress)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.StaffAddress)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.StaffDateOfEmployment)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.StaffDateOfEmployment)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.StaffPhoneNumber)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.StaffPhoneNumber)
+                                    </dd>
+
+                                </dl>
+                                <div class="pull-right">
+                                    <p style="font-weight: bold" class="text-danger ">Are you sure?</p>
+                                    <a href="@Url.Action("Edit", "Restaurant")" class="btn btn-sm btn-primary">Yes</a>
+                                    <a class="btn btn-sm btn-warning" data-dismiss="modal">No</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+

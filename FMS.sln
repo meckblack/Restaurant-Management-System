@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMS", "FMS\FMS.csproj", "{ABCB5ABD-9450-4457-850D-A0C219AF406D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMS_DbConnections", "FMS_DbConnections\FMS_DbConnections.csproj", "{69EB4893-7E11-4FE0-B77E-1E49AE314363}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMS_Objects", "FMS_Objects\FMS_Objects.csproj", "{B50A834E-7E13-4B6F-B0C6-38A86F4970AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABCB5ABD-9450-4457-850D-A0C219AF406D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABCB5ABD-9450-4457-850D-A0C219AF406D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABCB5ABD-9450-4457-850D-A0C219AF406D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABCB5ABD-9450-4457-850D-A0C219AF406D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69EB4893-7E11-4FE0-B77E-1E49AE314363}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69EB4893-7E11-4FE0-B77E-1E49AE314363}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69EB4893-7E11-4FE0-B77E-1E49AE314363}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69EB4893-7E11-4FE0-B77E-1E49AE314363}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B50A834E-7E13-4B6F-B0C6-38A86F4970AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B50A834E-7E13-4B6F-B0C6-38A86F4970AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B50A834E-7E13-4B6F-B0C6-38A86F4970AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B50A834E-7E13-4B6F-B0C6-38A86F4970AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

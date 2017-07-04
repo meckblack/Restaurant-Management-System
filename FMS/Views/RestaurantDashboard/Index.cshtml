@@ -1,0 +1,203 @@
+﻿@model IEnumerable<FMS.Models.Restaurant>
+@using FMS.DAL;
+@{
+    ViewBag.Title = "Index";
+    FMS_DB db = new FMS_DB();
+    int RID = Convert.ToInt32(Session["rID"]);
+
+    var food = db.food.Where(s => s.RestaurantId.Equals(RID)).ToArray().Length;
+    var staff = db.staff.Where(s => s.RestaurantId.Equals(RID)).ToArray().Length;
+    var income = db.incomeCategory.Where(s => s.RestaurantId.Equals(RID)).ToArray().Length;
+    var expense = db.expenseCategory.Where(s => s.RestaurantId.Equals(RID)).ToArray().Length;
+    
+}
+
+<style>
+    .modal-backdrop {
+        z-index: 0;
+    }
+
+    div#myModal.modal.fade.in{
+        overflow: hidden;
+    }
+</style>
+
+<div class="container-fluid">
+ 
+    <div class="row">
+        <div class="col-md-12">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="breadcrumb">
+                            <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+                            <li><a href="@Url.Action("Index", "Restaurant")">Restaurant</a></li>
+                            <li>@Session["rName"].ToString()</li>
+                        </ul>
+                        <div class="card">
+                            <div class="card-header" data-background-color="purple">
+                                <h4 class="title"> @Session["rName"].ToString() </h4>
+                            </div>
+                            <div class="card-content">
+                                <h4><strong>Acronym: </strong>@Session["rAcronym"].ToString() </h4>
+                                <h4><strong>Address: </strong>@Session["rAddress"].ToString() </h4>
+                                <h4><strong>LGA: </strong>@Session["rLGA"].ToString() </h4>
+                                <h4><strong>Postal Code: </strong>@Session["rPostalCode"].ToString() </h4>
+                                <h4><strong>Country: </strong>@Session["rCountry"].ToString() </h4>
+                                <hr />
+                                <a href="@Url.Action("Edit", "RestaurantDashboard", new { id = Convert.ToInt32(Session["rID"]) })" data-modal=""><i style="font-size: small;" class="btn btn-warning fa fa-edit pull-right"> Edit</i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="orange">
+                    <i class="material-icons">people</i>
+                </div>
+                <div class="card-content">
+                    <p class="category"><strong>STAFF</strong></p>
+                    <h3 class="title"> @staff </h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons text-danger">people</i> <a href="@Url.Action("Index","Staff", new { id = Convert.ToInt32(Session["rID"]) })"> View Staffs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="green">
+                    <i class="material-icons">store</i>
+                </div>
+                <div class="card-content">
+                    <p class="category"><strong>FOOD</strong></p>
+                    <h3 class="title"> @food </h3>
+                </div> 
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">date_range</i><a href="@Url.Action("Index","Food", new { id = Convert.ToInt32(Session["rID"]) })"> View Food</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="red">
+                    <i class="material-icons">info_outline</i>
+                </div>
+                <div class="card-content">
+                    <p class="category"><strong>INCOME</strong></p>
+                    <h3 class="title"> @income</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">local_offer</i><a href="@Url.Action("Index","IncomeCategory", new { id = Convert.ToInt32(Session["rID"]) })"> View Income</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="blue">
+                    <i class="fa fa-money"></i>
+                </div>
+                <div class="card-content">
+                    <p class="category"><strong>EXPENSE</strong></p>
+                    <h3 class="title">+@expense</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">update</i><a href="@Url.Action("Index","ExpenseCategory", new { id = Convert.ToInt32(Session["rID"]) })">View Expense</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="blue">
+                    <i class="fa fa-money"></i>
+                </div>
+                <div class="card-content">
+                    <p class="category"><strong>SALARY</strong></p>
+                    <h3 class="title">+245</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">update</i><a href="@Url.Action("Index","ExpenseCategory", new { id = Convert.ToInt32(Session["rID"]) })">View Expense</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--div-- class="row">
+            
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header card-chart" data-background-color="green">
+                            <div class="ct-chart" id="dailySalesChart"></div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="title">Daily Sales</h4>
+                            <p class="category"><span class="text-success"><i class="fa fa-long-arrow-up"></i> 55%  </span> increase in today sales.</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">access_time</i> updated 4 minutes ago
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header card-chart" data-background-color="orange">
+                            <div class="ct-chart" id="emailsSubscriptionChart"></div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="title">Email Subscriptions</h4>
+                            <p class="category">Last Campaign Performance</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">access_time</i> campaign sent 2 days ago
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header card-chart" data-background-color="red">
+                            <div class="ct-chart" id="completedTasksChart"></div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="title">Completed Tasks</h4>
+                            <p class="category">Last Campaign Performance</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">access_time</i> campaign sent 2 days ago
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div-->
+        </div>
+    </div>
+
+<!--Modal Placeholder-->
+<div id='myModal' class='modal fade in'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/Appjs/FMS.js"></script>
+
+

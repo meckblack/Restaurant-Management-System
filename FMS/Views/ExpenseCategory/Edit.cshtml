@@ -1,0 +1,62 @@
+﻿@model FMS.Models.ExpenseCategory
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class=" modal-body">
+        <div class="container-fluid">
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header" data-background-color="purple">
+                                <h3 class="modal-title">Editing @Html.DisplayFor(model => model.ExpenseCategoryTitle)</h3>
+                            </div>
+                            <div class="card-content">
+                                <form>
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.ExpenseCategoryId)
+                                    @Html.HiddenFor(model => model.RestaurantId)
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.ExpenseCategoryTitle, new { @class = "control-label" })
+                                                @Html.TextBoxFor(model => model.ExpenseCategoryTitle, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.ExpenseCategoryTitle, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.ExpenseCategoryDescription, new { @class = "control-label" })
+                                                @Html.TextAreaFor(model => model.ExpenseCategoryDescription, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.ExpenseCategoryDescription, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input class="btn btn-primary" type="submit" value="Update" />
+                                        <button class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    $("form").removeData("validator");
+    $("form").removeData("unobtrusiveValidation");
+    $.validator.unobtrusive.parse("form");
+</script>

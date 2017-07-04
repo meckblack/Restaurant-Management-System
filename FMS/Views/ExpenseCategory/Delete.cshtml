@@ -1,0 +1,63 @@
+﻿@model FMS.Models.ExpenseCategory
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+</div>
+
+<div class=" modal-body">
+    <div class="container-fluid">
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="purple">
+                            <h3 class="modal-title">Deleting @Html.DisplayFor(model => model.ExpenseCategoryTitle)</h3>
+                        </div>
+                        <div class="card-content">
+                            <dl class="dl-horizontal col-md-offset-2">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RestaurantVirtual.RestaurantName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RestaurantVirtual.RestaurantName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ExpenseCategoryTitle)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.ExpenseCategoryTitle)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ExpenseCategoryDescription)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.ExpenseCategoryDescription)
+                                </dd>
+
+                            </dl>
+
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="modal-footer">
+                                    <input class="btn btn-primary" type="submit" value="Delete" />
+                                    <button class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

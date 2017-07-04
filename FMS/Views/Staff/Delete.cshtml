@@ -1,0 +1,118 @@
+﻿@model FMS.Models.Staff
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+</div>
+
+    <div class=" modal-body">
+        <div class="container-fluid">
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header" data-background-color="purple">
+                                <h3 class="modal-title">Deleting @Html.DisplayFor(model => model.StaffFirstName) @Html.DisplayFor(model => model.StaffLastName)</h3>
+                            </div>
+                            <div class="card-content">
+                                <dl class="dl-horizontal col-md-offset-2">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.RestaurantVirtual.RestaurantName)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.RestaurantVirtual.RestaurantName)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.StaffFirstName)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.StaffFirstName)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.StaffLastName)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.StaffLastName)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.StaffMiddleName)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.StaffMiddleName)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.StaffEmail)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.StaffEmail)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.StaffGender)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.StaffGender)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.StaffAddress)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.StaffAddress)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.StaffDateOfEmployment)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.StaffDateOfEmployment)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.StaffDateOfBirth)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.StaffDateOfBirth)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.StaffPhoneNumber)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.StaffPhoneNumber)
+                                    </dd>
+                                </dl>
+
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="modal-footer">
+                                        <input class="btn btn-primary" type="submit" value="Delete" />
+                                        <button class="btn btn-warning" data-dismiss="modal">Close</button>
+                                    </div>
+                                }
+                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

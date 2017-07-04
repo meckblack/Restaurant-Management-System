@@ -1,0 +1,76 @@
+﻿@model FMS.Models.Food
+@{
+    ViewBag.Title = "Delete_Food";
+}
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+</div>
+
+<div class=" modal-body">
+    <div class="container-fluid">
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="purple">
+                            <h3 class="modal-title">Deleting @Html.DisplayFor(model => model.FoodName)</h3>
+                        </div>
+                        <div class="card-content">
+                            <dl class="dl-horizontal col-md-offset-2">
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.FoodName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.FoodName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.FoodType)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.FoodType)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.FoodPrice)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.FoodPrice)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.FoodDescription)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.FoodDescription)
+                                </dd>
+                            </dl>
+
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="modal-footer">
+                                    <input class="btn btn-primary" type="submit" value="Delete" />
+                                    <button class="btn btn-warning" data-dismiss="modal">Close</button>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

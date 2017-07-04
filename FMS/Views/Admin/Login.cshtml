@@ -1,0 +1,44 @@
+﻿@model FMS.Models.Admin
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container-fluid">
+        <div class="content">
+            <div class="row">
+                <div style="padding-top: 100px; padding-left: 30px;" class=" col-md-offset-4 col-xs col-md-4" >
+                    <div class="card">
+                        <div class="card-header" data-background-color="purple">
+                            <h3 class="modal-title">Adminstrator</h3>
+                        </div>
+                        <div class="card-content">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.AdminUsername, new { @class = "control-label" })
+                                            @Html.TextBoxFor(model => model.AdminUsername, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.AdminPassword, new { @class = "control-label" })
+                                            @Html.PasswordFor(model => model.AdminPassword, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <input class="btn btn-primary" type="submit" value="Login" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,100 @@
+﻿@model FMS.Models.Restaurant
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class=" modal-body">
+        <div class="container-fluid">
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header" data-background-color="purple">
+                                <h3 class="modal-title">Edit @Html.DisplayFor(model => model.RestaurantName)</h3>
+                            </div>
+                            <div class="card-content">
+                                <form>
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.RestaurantId)
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.RestaurantName, new { @class = "control-label" })
+                                                @Html.TextBoxFor(model => model.RestaurantName, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.RestaurantName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.RestaurantAcronym, new { @class = "control-label" })
+                                                @Html.TextBoxFor(model => model.RestaurantAcronym, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.RestaurantAcronym, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.RestaurantAddress, new { @class = "control-label" })
+                                                @Html.TextBoxFor(model => model.RestaurantAddress, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.RestaurantAddress, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.LGA, new { @class = "control-label" })
+                                                @Html.TextBoxFor(model => model.LGA, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.LGA, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.PostalCode, new { @class = "control-label" })
+                                                @Html.TextBoxFor(model => model.PostalCode, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                @Html.LabelFor(model => model.Country, new { @class = "control-label" })
+                                                @Html.TextBoxFor(model => model.Country, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <input class="btn btn-primary" type="submit" value="Save" />
+                                        <button class="btn btn-warning" data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+}
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    $("form").removeData("validator");
+    $("form").removeData("unobtrusiveValidation");
+    $.validator.unobtrusive.parse("form");
+</script>

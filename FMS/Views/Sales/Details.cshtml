@@ -1,0 +1,50 @@
+﻿@model FMS.Models.Sales
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sales</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RestaurantVirtual.RestaurantName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestaurantVirtual.RestaurantName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleQuantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleQuantity)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SaleId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,111 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using FMS.Models
+
+@model IPagedList<FMS.Models.Restaurant>
+
+<link href="~/Content/css/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Restaurant";
+}
+<style>
+    .modal-backdrop {
+        z-index:0;
+    }
+    div#myModal.modal.fade.in {
+        overflow: hidden;
+    }
+</style>
+ <div class="row">
+     @using(Html.BeginForm("Index", "Restaurant", FormMethod.Get))
+     {
+     <div class="col-md-offset-9 col-md-3">
+         <form class="navbar-form navbar-left" role="search">
+             <div class="form-group  is-empty">
+                 @Html.TextBox("SearchString", ViewBag.currentFilter as string, new { @class = "form-control", @placeholder = "Search" })
+                 <span class="material-input"></span>
+             </div>
+             <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                 <i class="material-icons">search</i><div class="ripple-container"></div>
+             </button>
+         </form>
+     </div>
+     }
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index", "Dashboard")">Home</a></li>
+            <li>Restaurant</li>
+            <a href="@Url.Action("Create", "Restaurant")" data-modal="" class="btn btn-primary pull-right">ADD</a>
+        </ul>
+
+
+        <div class="card" data-image="/img/foood.jpg">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">RESTAURANTS</h4>
+            </div>
+            <div class="card-content table-responsive" data-image="/img/foood.jpg">
+                <table class="table">
+                    <thead class="text-primary">
+                        <tr>
+                            <th>
+                                @Html.ActionLink("Restaurant Name", "Index", new { sortOrder = ViewBag.RestaurantNameSortParm })
+                            </th>
+                            <th>
+                                @Html.ActionLink("LGA", "Index", new { sortOrder = ViewBag.LGASortParm })
+                            </th>
+                            <th>
+                                Country
+                            </th>
+                            <th>
+                                Postal Code
+                            </th>
+                            <th>
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RestaurantName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LGA)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Country)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PostalCode)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Index", "RestaurantDashboard", new { id = item.RestaurantId })"><i style="padding-right: 5px" class="fa fa-2x fa-share-square-o"></i></a>
+                                    <a href="@Url.Action("Delete", "Restaurant", new { id = item.RestaurantId })" data-modal=""><i class="fa fa-2x fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <hr/>
+                  Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                  @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal placeholder-->
+<div id='myModal' class='modal fade in'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/Appjs/FMS.js"></script>
