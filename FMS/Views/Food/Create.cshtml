@@ -35,7 +35,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group label-floating">
                                                 @Html.LabelFor(model => model.FoodType, new { @class = "control-label" })
-                                                @Html.DropDownListFor(model => model.FoodType, new SelectList(Enum.GetValues(typeof(FMS.Models.FoodType))), " ", new { @class = "form-control" })
+                                                @Html.DropDownListFor(model => model.FoodType, new SelectList(Enum.GetValues(typeof(FMS_Objects.Enums.FoodType))), " ", new { @class = "form-control" })
                                                 @Html.ValidationMessageFor(model => model.FoodType, "", new { @class = "text-danger" })
                                             </div>
                                         </div>

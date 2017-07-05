@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace FMS.Controllers.FMS_Controller
 {
-    public class DashboardController : Controller
+    public class DashboardController : BaseController
     {
         //
         // GET: /Dashboard/
