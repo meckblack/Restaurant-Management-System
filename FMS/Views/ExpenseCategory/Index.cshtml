@@ -50,7 +50,7 @@
                                 {
                                     <tr>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.ExpenseCategoryTitle)
+                                            <a href="@Url.Action("Index", "ExpenseItem", new { id = item.ExpenseCategoryId })"> @Html.DisplayFor(modelItem => item.ExpenseCategoryTitle)</a>
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.ExpenseCategoryDescription)

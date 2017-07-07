@@ -70,7 +70,7 @@
                         {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.RestaurantName)
+                                    <a href="@Url.Action("Index", "RestaurantDashboard", new { id = item.RestaurantId })"> @Html.DisplayFor(modelItem => item.RestaurantName)</a>
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.LGA)
