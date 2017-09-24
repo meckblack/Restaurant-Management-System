@@ -14,23 +14,10 @@
     div#myModal.modal.fade.in {
         overflow: hidden;
     }
+    .redy{
+        color: red;
+    }
 </style>
- <div class="row">
-     @using(Html.BeginForm("Index", "Restaurant", FormMethod.Get))
-     {
-     <div class="col-md-offset-9 col-md-3">
-         <form class="navbar-form navbar-left" role="search">
-             <div class="form-group  is-empty">
-                 @Html.TextBox("SearchString", ViewBag.currentFilter as string, new { @class = "form-control", @placeholder = "Search" })
-                 <span class="material-input"></span>
-             </div>
-             <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                 <i class="material-icons">search</i><div class="ripple-container"></div>
-             </button>
-         </form>
-     </div>
-     }
-</div>
 <div class="row">
     <div class="col-md-12">
         <ul class="breadcrumb">
@@ -44,23 +31,23 @@
             <div class="card-header" data-background-color="purple">
                 <h4 class="title">RESTAURANTS</h4>
             </div>
-            <div class="card-content table-responsive" data-image="/img/foood.jpg">
+            <div class="card-content table-responsive" data-image="/img/foood.jpg" id="myTable">
                 <table class="table">
                     <thead class="text-primary">
                         <tr>
-                            <th>
-                                @Html.ActionLink("Restaurant Name", "Index", new { sortOrder = ViewBag.RestaurantNameSortParm })
+                            <th class="redy">
+                                Name
                             </th>
-                            <th>
-                                @Html.ActionLink("LGA", "Index", new { sortOrder = ViewBag.LGASortParm })
+                            <th class="redy">
+                                LGA
                             </th>
-                            <th>
+                            <th class="redy">
                                 Country
                             </th>
-                            <th>
+                            <th class="redy">
                                 Postal Code
                             </th>
-                            <th>
+                            <th class="redy">
                                 Actions
                             </th>
                         </tr>
@@ -69,7 +56,7 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>
+                                <td  class="redy">
                                     <a href="@Url.Action("Index", "RestaurantDashboard", new { id = item.RestaurantId })"> @Html.DisplayFor(modelItem => item.RestaurantName)</a>
                                 </td>
                                 <td>
@@ -89,9 +76,6 @@
                         }
                     </tbody>
                 </table>
-                <hr/>
-                  Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-                  @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
             </div>
         </div>
     </div>
@@ -107,4 +91,18 @@
     </div>
 </div>
 
+<script src="~/scripts/jquery-1.12.4.js" type="text/javascript"></script>
 <script src="~/Scripts/Appjs/FMS.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable({
+            columnDefs: [
+                {
+                    targets: [0, 1, 2],
+                    className: 'dataTable'
+                }
+            ]
+        });
+    });
+</script>

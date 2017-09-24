@@ -1,6 +1,7 @@
 ﻿@model FMS_Objects.Enities.ExpenseCategory
-<div class="modal-header">
+<div class="modal-header" style="background-color: purple">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 class="modal-title" style="color:white; align-content:center">Create Expense Category</h3>
 
 </div>
 @using (Html.BeginForm())
@@ -12,9 +13,9 @@
             <div class="content">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header" data-background-color="purple">
-                                <h3 class="modal-title">Create Expense Category</h3>
+                        <div class="">
+                            <div class="card-header" >
+                                
                             </div>
                             <div class="card-content">
                                 <form>
@@ -24,7 +25,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group label-floating">
-                                                @Html.LabelFor(model => model.ExpenseCategoryTitle, new { @class = "control-label" })
+                                                <strong> @Html.LabelFor(model => model.ExpenseCategoryTitle, new { @class = "control-label" })</strong>
                                                 @Html.TextBoxFor(model => model.ExpenseCategoryTitle, new { @class = "form-control" })
                                                 @Html.ValidationMessageFor(model => model.ExpenseCategoryTitle, "", new { @class = "text-danger" })
                                             </div>
@@ -39,10 +40,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <input class="btn btn-primary" type="submit" value="Add" />
-                                        <button class="btn btn-warning" data-dismiss="modal">Cancel</button>
-                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -50,6 +47,11 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="modal-footer">
+        <input class="btn btn-primary" type="submit" value="Add" />
+        <button class="btn btn-warning" data-dismiss="modal">Cancel</button>
     </div>
 }
 

@@ -1,10 +1,8 @@
-﻿using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 
 using FMS_DbConnections.DAL;
-using PagedList;
 using FMS_Objects.Enities;
 namespace FMS.Controllers.FMS_Controller
 {
@@ -13,48 +11,9 @@ namespace FMS.Controllers.FMS_Controller
         private FMS_DB db = new FMS_DB();
 
         // GET: /Restaurant/
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int ? page)
-        {
-            ViewBag.RestaurantNameSortParm = string.IsNullOrEmpty(sortOrder) ? "RestaurantName_desc" : "";
-            ViewBag.LGASortParm = sortOrder == "LGA" ? "LGA_desc" : "LGA";
-
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            ViewBag.currentFilter = searchString;
-
-            var restaurants = from r in db.restaurant
-                              select r;
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                restaurants = restaurants.Where(r => r.RestaurantName.ToUpper().Contains(searchString.ToUpper()) || r.LGA.ToUpper().Contains(searchString.ToUpper()));
-            }
-            switch (sortOrder)
-            {
-                case "RestaurantName_desc":
-                    restaurants = restaurants.OrderByDescending(r => r.RestaurantName);
-                    break;
-                case "LGA":
-                    restaurants = restaurants.OrderBy(r => r.LGA);
-                    break;
-                case "LGA_desc":
-                    restaurants = restaurants.OrderByDescending(r => r.LGA);
-                    break;
-
-                default:
-                    restaurants = restaurants.OrderBy(r => r.RestaurantId);
-                    break;
-            }
-            int pageSize = 3;
-            int pageNumber = (page ?? 1);
-
-            return View(restaurants.ToPagedList(pageNumber, pageSize));
+        public ActionResult Index()
+        {   
+            return View(db.restaurant.ToList());
         }
 
        
