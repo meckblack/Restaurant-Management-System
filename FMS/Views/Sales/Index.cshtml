@@ -7,32 +7,11 @@
 
 <div class="container-fluid">
     <div class="row">
-        @using (Html.BeginForm("Index", "Sales", FormMethod.Get))
-        {
-            <div class="col-md-offset-9 col-md-3">
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group  is-empty">
-                        @Html.TextBox("SearchString", ViewBag.currentFilter as string, new { @class = "form-control", @placeholder = "Search" })
-                        <span class="material-input"></span>
-                    </div>
-                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                        <i class="material-icons">search</i><div class="ripple-container"></div>
-                    </button>
-                </form>
-            </div>
-        }
-    </div>
-
-    <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
-                <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
-                <li><a href="@Url.Action("Index", "Restaurant")">Restaurant</a></li>
                 <li><a href="@Url.Action("Index", "RestaurantDashboard", new { id = Convert.ToInt32(Session["rID"]) })"> @Session["rNamee"].ToString()</a></li>
                 <li>Foods</li>
-
                 <a href="@Url.Action("Create", "Sales")" data-modal="" class="btn btn-primary pull-right">ADD</a>
-
             </ul>
 
             <div class="card">
@@ -44,9 +23,14 @@
                         <thead class="text-primary">
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Sa)
+                                    Title
                                 </th>
-
+                                <th>
+                                    Amount
+                                </th>
+                                <th>
+                                    Quantity
+                                </th>
                                 <th>
                                     Actions
                                 </th>
@@ -57,32 +41,23 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.FoodName)
+                                        @Html.DisplayFor(modelItem => item.SaleTitle)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.FoodImage)
+                                        @Html.DisplayFor(modelItem => item.SaleAmount)
                                     </td>
 
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.FoodType)
+                                        @Html.DisplayFor(modelItem => item.SaleQuantity)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.FoodPrice)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.FoodDescription)
-                                    </td>
-                                    <td>
-                                        <a href="@Url.Action("Edit", "Food", new { id = item.FoodId })" data-modal=""><i style="padding-right: 5px" class="fa fa-2x fa-edit"></i></a>
-                                        <a href="@Url.Action("Delete", "Food", new { id = item.FoodId })" data-modal=""><i class="fa fa-2x fa-trash"></i></a>
+                                        <a href="@Url.Action("Edit", "Sale", new { id = item.SaleId })" data-modal=""><i style="padding-right: 5px" class="fa fa-2x fa-edit"></i></a>
+                                        <a href="@Url.Action("Delete", "Sale", new { id = item.SaleId })" data-modal=""><i class="fa fa-2x fa-trash"></i></a>
                                     </td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <hr />
-                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
                 </div>
             </div>
         </div>

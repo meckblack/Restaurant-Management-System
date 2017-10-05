@@ -20,7 +20,7 @@ namespace FMS.Controllers.FMS_Controller
             Session["rNames"] = x.RestaurantName;
             Session["rIDs"] = x.RestaurantId;
             var sales = db.sales.Where(s => s.RestaurantId == RestaurantId).ToList();
-            return View(sales   );
+            return View(sales);
         }
 
 

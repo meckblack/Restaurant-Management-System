@@ -29,7 +29,7 @@
                 <div class="card-content table-responsive">
                     @using (Html.BeginForm())
                     {
-                        <table class="table">
+                        <table class="table" id="myTable">
                             <thead class="text-primary">
                                 <tr>
                                     <th>
@@ -84,3 +84,17 @@
 </div>
 <script src="~/scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script src="~/Scripts/Appjs/FMS.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable({
+            columnDefs: [
+                {
+                    targets: [0, 1, 2],
+                    className: 'dataTable'
+                }
+            ]
+        });
+    });
+</script>
