@@ -161,6 +161,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710051130522_Migration1.cs" />
+    <Compile Include="Migrations\201710051130522_Migration1.Designer.cs">
+      <DependentUpon>201710051130522_Migration1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -277,7 +281,6 @@
     <Content Include="Views\RestaurantDashboard\Index.cshtml" />
     <Content Include="Views\Shared\Partial\_MaterialSidebar.cshtml" />
     <Content Include="Views\Shared\Partial\_MaterialNavbar.cshtml" />
-    <Content Include="Views\Shared\Partial\Create.cshtml" />
     <Content Include="Views\Staff\Create.cshtml" />
     <Content Include="Views\Restaurant\Create.cshtml" />
     <Content Include="Views\RestaurantDashboard\Edit.cshtml" />
@@ -307,6 +310,7 @@
     <Content Include="Views\Sales\Details.cshtml" />
     <Content Include="Views\Sales\Edit.cshtml" />
     <Content Include="Views\Sales\Index.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -327,6 +331,11 @@
       <Project>{b50a834e-7e13-4b6f-b0c6-38a86f4970af}</Project>
       <Name>FMS_Objects</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710051130522_Migration1.resx">
+      <DependentUpon>201710051130522_Migration1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

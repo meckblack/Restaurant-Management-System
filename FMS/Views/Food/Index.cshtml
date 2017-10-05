@@ -3,9 +3,8 @@
 @using FMS_Objects.Enities;
 
 @model IPagedList<FMS_Objects.Enities.Food>
-
-<link href="~/Content/css/PagedList.css" rel="stylesheet" />
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Index";
     var food = new Food();
 }

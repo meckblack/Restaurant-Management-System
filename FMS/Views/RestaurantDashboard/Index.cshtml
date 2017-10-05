@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<FMS_Objects.Enities.Restaurant>
 @using FMS_DbConnections.DAL;
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Index";
     FMS_DB db = new FMS_DB();
     int RID = Convert.ToInt32(Session["rID"]);
