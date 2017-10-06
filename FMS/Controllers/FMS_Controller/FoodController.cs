@@ -3,7 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using FMS_DbConnections.DAL;
+using FMS_DbConnections.DataContext.StaffDataContext;
 using FMS_Objects.Enities;
 using PagedList;
 
@@ -12,57 +12,18 @@ namespace FMS.Controllers.FMS_Controller
 {
     public class FoodController : Controller
     {
-        private FMS_DB db = new FMS_DB();
+        private StaffDataContext db = new StaffDataContext();
 
         // GET: /Food/
         [Route("Food/Index/{RestaurantId}")]
-        public ActionResult Index(int RestaurantId, string sortOrder, string searchString, string currentFilter, int ? page)
+        public ActionResult Index(int RestaurantId)
         {
             var x = db.restaurant.Find(RestaurantId);
             Session["rNamee"] = x.RestaurantName;
             Session["rID"] = x.RestaurantId;
             
             var food = db.food.Where(f => f.RestaurantId == RestaurantId).ToList();
-
-            ViewBag.FoodNameSortParm = String.IsNullOrEmpty(sortOrder) ? "FoodName_desc" : "";
-            ViewBag.FoodTypeSortParm = sortOrder == "FoodType" ? "FoodType_desc" : "FoodType";
-            
-            if(searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            ViewBag.currentFilter = searchString;
-
-            var foods = from f in db.food
-                       select f;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                foods = foods.Where(f => f.FoodName.ToUpper().Contains(searchString.ToUpper()) || f.FoodType.ToString().Contains(searchString.ToUpper()));
-            }
-            switch (sortOrder)
-            {
-                case "FoodName_desc":
-                    foods = foods.OrderByDescending(f => f.FoodName);
-                    break;
-                case "FoodType":
-                    foods = foods.OrderBy(f => f.FoodType);
-                    break;
-                case "FoodType_desc":
-                    foods = foods.OrderByDescending(f => f.FoodType);
-                    break;
-                default:
-                    foods = foods.OrderBy(f => f.FoodName);
-                    break;
-            }
-
-            int pageSize = 3;
-            int pageNumber = (page ?? 1);
-            return View(foods.ToPagedList(pageNumber, pageSize));
+            return View(food);
         }
 
         // GET: /Food/Details/5

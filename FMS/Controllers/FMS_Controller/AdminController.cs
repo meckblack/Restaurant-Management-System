@@ -1,14 +1,14 @@
 ﻿using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using FMS_DbConnections.DAL;
+using FMS_DbConnections.DataContext.StaffDataContext;
 using FMS_Objects.Enities;
 
 namespace FMS.Controllers.FMS_Controller
 {
     public class AdminController : Controller
     {
-        private FMS_DB db = new FMS_DB();
+        private StaffDataContext db = new StaffDataContext();
 
         // GET: /Admin/
         public ActionResult Index()

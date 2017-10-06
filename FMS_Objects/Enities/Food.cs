@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using FMS_Objects.Enums;
+using FMS_Objects.Entities.SystemManagement;
 
 namespace FMS_Objects.Enities
 {

@@ -50,9 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="DAL\FMS_DB.cs" />
-    <Compile Include="DAL\MyDbInitializer.cs" />
+    <Compile Include="DataContext\StaffDataContext\StaffDataContext.cs" />
+    <Compile Include="DataContext\StaffDataContext\MyDbInitializer.cs" />
+    <Compile Include="DataContext\StaffDataContext\BankDataContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

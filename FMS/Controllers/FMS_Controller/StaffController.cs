@@ -3,7 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using FMS_DbConnections.DAL;
+using FMS_DbConnections.DataContext.StaffDataContext;
 using FMS_Objects.Enities;
 using PagedList;
 
@@ -12,80 +12,18 @@ namespace FMS.Controllers.FMS_Controller
 
     public class StaffController : System.Web.Mvc.Controller
     {
-        private FMS_DB db = new FMS_DB();
+        private StaffDataContext db = new StaffDataContext();
 
         // GET: /Staff/
         [Route("Staff/Index/{RestaurantId}")]
-        public ActionResult Index(int RestaurantId, string sortOrder, string searchString, string currentFilter, int? page)
+        public ActionResult Index(int RestaurantId)
         {
             var x = db.restaurant.Find(RestaurantId);
             var staffs = db.staff.Where(s => s.RestaurantId == RestaurantId).ToList();
             Session["rName"] = x.RestaurantName;
             Session["rID"] = RestaurantId;
 
-            ViewBag.StaffFirstNameParm = String.IsNullOrEmpty(sortOrder) ? "StaffFirstName_desc" : "";
-            ViewBag.StaffLastNameParm = sortOrder == "StaffLasttName" ? "StaffLastName_desc" : "StaffLastName";
-            ViewBag.StaffGenderParm = sortOrder == "StaffGender" ? "StaffGender_desc" : "StaffGender";
-            ViewBag.StaffDOEParm = sortOrder == "StaffDOE" ? "StaffDOE_desc" : "StaffDOE";
-            ViewBag.StaffDepartmentParm = sortOrder == "StaffDepartment" ? "StaffDepartment_desc" : "StaffDepartment";
-
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            ViewBag.CurrentFilter = searchString;
-
-            var staff = from s in db.staff
-                        select s;
-            if(!String.IsNullOrEmpty(searchString))
-            {
-                staff = staff.Where(s => s.StaffFirstName.ToUpper().Contains(searchString.ToUpper()) || s.StaffLastName.ToUpper().Contains(searchString.ToUpper()) || 
-                                         s.StaffMiddleName.ToUpper().Contains(searchString.ToUpper()) || s.StaffGender.ToString().Contains(searchString.ToUpper()) ||
-                                         s.StaffDepartment.ToString().Contains(searchString.ToUpper()));
-            }
-            switch (sortOrder)
-            {
-                case "StaffFirstName_desc":
-                    staff = staff.OrderByDescending(s => s.StaffFirstName);
-                    break;
-                case "StaffLastName":
-                    staff = staff.OrderBy(s => s.StaffLastName);
-                    break;
-                case "StaffLastName_desc":
-                    staff = staff.OrderByDescending(s => s.StaffLastName);
-                    break;
-                case "StafGender":
-                    staff = staff.OrderBy(s => s.StaffGender);
-                    break;
-                case "StaffGender_desc":
-                    staff = staff.OrderByDescending(s => s.StaffGender);
-                    break;
-                case "StaffDOE":
-                    staff = staff.OrderBy(s => s.StaffDateOfEmployment);
-                    break;
-                case "StaffaDOE_desc":
-                    staff = staff.OrderByDescending(s => s.StaffDateOfEmployment);
-                    break;
-                case "StaffDepartment":
-                    staff = staff.OrderBy(s => s.StaffDepartment);
-                    break;
-                case "StaffDepartment_desc":
-                    staff = staff.OrderByDescending(s => s.StaffDepartment);
-                    break;
-                default:
-                    staff = staff.OrderBy(s => s.StaffFirstName);
-                    break;
-            }
-
-            int pageSize = 3;
-            int pageNumber = (page ?? 1);
-
-            return View(staff.ToPagedList(pageNumber, pageSize));
+            return View(staffs);
         }
 
         // GET: /Staff/Create
@@ -102,7 +40,7 @@ namespace FMS.Controllers.FMS_Controller
         {
             if (ModelState.IsValid)
             {
-                var r = new Staff
+                var s = new Staff
                 {
                     RestaurantId = Convert.ToInt32(Session["rID"]),
                     StaffFirstName = staff.StaffFirstName,
@@ -120,7 +58,7 @@ namespace FMS.Controllers.FMS_Controller
                     StaffBank = staff.StaffBank  
                 };
 
-                db.staff.Add(r);
+                db.staff.Add(s);
                 db.SaveChanges();
                 return Json(new { success = true});
             }

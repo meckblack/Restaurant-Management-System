@@ -1,12 +1,13 @@
-namespace FMS.Migrations
-{
+
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using FMS_DbConnections.DAL;
+    using FMS_DbConnections.DataContext;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<FMS_DbConnections.DAL.FMS_DB>
+namespace FMS_DbConnections.Migrations
+{
+    internal sealed class Configuration : DbMigrationsConfiguration<FMS_DbConnections.DataContext.StaffDataContext.StaffDataContext>
     {
         public Configuration()
         {
@@ -14,7 +15,7 @@ namespace FMS.Migrations
             SetSqlGenerator("MySql.Data.MySqlClient", new MySql.Data.Entity.MySqlMigrationSqlGenerator());
         }
 
-        protected override void Seed(FMS_DbConnections.DAL.FMS_DB context)
+        protected override void Seed(FMS_DbConnections.DataContext.StaffDataContext.StaffDataContext context)
         {
             //  This method will be called after migrating to the latest version.
 
