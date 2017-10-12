@@ -161,15 +161,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710051130522_Migration1.cs" />
-    <Compile Include="Migrations\201710051130522_Migration1.Designer.cs">
-      <DependentUpon>201710051130522_Migration1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710061203522_Migration1.cs" />
-    <Compile Include="Migrations\201710061203522_Migration1.Designer.cs">
-      <DependentUpon>201710061203522_Migration1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -335,14 +326,6 @@
       <Project>{b50a834e-7e13-4b6f-b0c6-38a86f4970af}</Project>
       <Name>FMS_Objects</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710051130522_Migration1.resx">
-      <DependentUpon>201710051130522_Migration1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710061203522_Migration1.resx">
-      <DependentUpon>201710061203522_Migration1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

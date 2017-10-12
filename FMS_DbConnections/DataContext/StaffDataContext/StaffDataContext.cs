@@ -11,7 +11,6 @@ namespace FMS_DbConnections.DataContext.StaffDataContext
     {
         public StaffDataContext() : base("MyFMS_DB")
         {
-            Database.SetInitializer<StaffDataContext>(new MyDbInitializer());
         }
 
         public DbSet<Admin> admin { get; set; }
